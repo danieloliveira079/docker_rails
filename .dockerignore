@@ -1,0 +1,5 @@
+.git*
+LICENCE
+README.md
+Dockerfile
+Makefile

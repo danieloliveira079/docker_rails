@@ -1,0 +1,44 @@
+version: "3"
+services:
+  web:
+    build: .
+    container_name: web
+    command: ./entrypoint.sh
+    working_dir: /usr/src/app
+    ports:
+      - 3000:3000
+    volumes:
+      - $PWD:/usr/src/app
+      - $PWD/bundle:/usr/local/bundle
+    environment:
+      MEMCACHED_URL: memcached:11211
+      REDIS_URL: redis://redis:6379
+      POSTGRES_URL: db
+    links:
+      - db:db
+      - cache:cache
+      - elasticsearch:elasticsearch
+      - redis:redis
+  db:
+    image: postgres:9.5
+    environment:
+      POSTGRES_DB: railsapp_development
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - data-volume:/var/lib/postgresql/data
+  cache:
+    image: memcached
+  elasticsearch:
+    image: elasticsearch
+    volumes:
+      - els-volume:/usr/share/elasticsearch/data
+  redis:
+    image: redis
+    volumes:
+      - redis-volume:/data
+
+volumes:
+  data-volume:
+  redis-volume:
+  els-volume:
