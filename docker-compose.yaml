@@ -19,21 +19,29 @@ services:
       - cache:cache
       - elasticsearch:elasticsearch
       - redis:redis
+
   db:
     image: postgres:9.5
+    container_name: db
     environment:
       POSTGRES_DB: railsapp_development
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
       - data-volume:/var/lib/postgresql/data
+
   cache:
     image: memcached
+    container_name: cache
+
   elasticsearch:
     image: elasticsearch
+    container_name: els
     volumes:
       - els-volume:/usr/share/elasticsearch/data
+
   redis:
+    container_name: redis
     image: redis
     volumes:
       - redis-volume:/data

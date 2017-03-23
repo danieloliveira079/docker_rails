@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-rm -f /var/app/tmp/pids/server.pid
+rm -f /usr/src/app/tmp/pids/server.pid
 
 gem install bundler && bundle install
 
