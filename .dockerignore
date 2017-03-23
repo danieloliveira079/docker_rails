@@ -3,3 +3,8 @@ LICENCE
 README.md
 Dockerfile
 Makefile
+bundle/
+log/
+tmp/
+.dockerignore
+docker-compose.yaml

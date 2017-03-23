@@ -10,8 +10,14 @@ INSTANCE=default
 ENV= \
 	-e RAILS_ENV=production
 
-.PHONY: build push shell run start stop rm release
+.PHONY: build push shell run start stop rm release up down
 
+up:
+	docker-compose up
+
+down:
+	docker-compose down
+	
 build:
 	docker build -t $(REPO)/$(NAME):$(VERSION) .
 
