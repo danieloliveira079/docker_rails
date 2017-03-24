@@ -34,6 +34,7 @@ Reference from the `Rails` source code to the following environment variables in
 MEMCACHED_URL: memcached:11211
 REDIS_URL: redis://redis:6379
 POSTGRES_URL: db
+ELASTICSEARCH_URL: elasticsearch:9200
 ```
 
 For example:
