@@ -5,7 +5,7 @@ PORTS= \
 VOLUMES= -v $PWD:/usr/src/app
 WORKDIR= -w /usr/src/app
 REPO=myrepo.local
-NAME=myrails
+NAME=web
 INSTANCE=default
 ENV= \
 	-e RAILS_ENV=production
@@ -17,7 +17,13 @@ up:
 
 down:
 	docker-compose down
-	
+
+exec:
+	docker exec -it ${NAME} bash
+
+irb:
+	docker exec -it ${NAME} rails console
+
 build:
 	docker build -t $(REPO)/$(NAME):$(VERSION) .
 
