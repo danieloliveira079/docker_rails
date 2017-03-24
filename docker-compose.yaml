@@ -14,11 +14,12 @@ services:
       MEMCACHED_URL: memcached:11211
       REDIS_URL: redis://redis:6379
       POSTGRES_URL: db
+      ELASTICSEARCH_URL: elasticsearch:9200
     depends_on:
       - db
       - elasticsearch
       - redis
-      - cache  
+      - cache
     links:
       - db:db
       - cache:cache
